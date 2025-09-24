@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.venv/
+.env
+
+# Node / Docusaurus
+node_modules/
+.build/
+.docusaurus/
+website/build/
+website/.docusaurus/
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
