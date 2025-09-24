@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "name": "game-logger",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB \"cd backend && .\\.venv\\Scripts\\python -m uvicorn app.main:app --reload --port 8000\" \"cd website && npm run start\"",
+    "dev:api": "cd backend && .\\.venv\\Scripts\\python -m uvicorn app.main:app --reload --port 8000",
+    "dev:web": "cd website && npm run start"
+  }
+}

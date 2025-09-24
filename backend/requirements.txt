@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+pandas
+openpyxl
+pydantic-settings
+httpx
+rapidfuzz
+cachetools
+watchdog
+python-multipart
+sqlalchemy
+aiosqlite
