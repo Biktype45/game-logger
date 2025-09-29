@@ -12,8 +12,15 @@ export async function fetchGames() {
 export async function fetchStats() {
   const r = await fetch(`${API_BASE}/stats`);
   if (!r.ok) throw new Error(`stats: ${r.status}`);
-  return r.json() as Promise<{ platform_counts: Record<string, number>; year_counts: Record<string, number> }>;
+  return r.json() as Promise<{
+    platform_counts: Record<string, number>;
+    year_counts: Record<string, number>;
+    category_counts: Record<string, number>;
+    monthly_completions: Record<string, number>;
+    avg_hours_by_platform: Record<string, number>;
+  }>;
 }
+
 
 export async function fetchVersion() {
   const r = await fetch(`${API_BASE}/version`);
