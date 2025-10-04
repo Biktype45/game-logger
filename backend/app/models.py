@@ -10,9 +10,12 @@ class GameRow(BaseModel):
     hours: Optional[float] = None
     rating: Optional[str] = None
     developer: Optional[str] = None
+    # NEW: enrichment fields (stay None until filled)
     metascore: Optional[int] = None
+    metascore_platform: Optional[int] = None
     metacritic_url: Optional[str] = None
     metacritic_count: Optional[int] = None
+
 
 class StatsResponse(BaseModel):
     platform_counts: dict[str, int]

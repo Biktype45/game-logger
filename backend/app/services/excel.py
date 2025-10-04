@@ -19,6 +19,7 @@ COLUMN_CANDIDATES = {
     # include your column: CATEGORY → category
     "rating": ["category", "rating", "tier", "my_rating"],
     "developer": ["developer", "dev", "studio"],
+    "metascore": ["metascore", "meta_score", "meta"]
 }
 
 
@@ -53,6 +54,10 @@ def read_excel() -> pd.DataFrame:
         df[resolved["completed_on"]] = pd.to_datetime(df[resolved["completed_on"]], errors="coerce").dt.date
     if "hours" in resolved:
         df[resolved["hours"]] = pd.to_numeric(df[resolved["hours"]], errors="coerce")
+    if "metascore" in resolved:
+        df[resolved["metascore"]] = pd.to_numeric(
+            df[resolved["metascore"]], errors="coerce"
+        )
 
     # Project to a consistent view
     out = pd.DataFrame({
@@ -62,6 +67,7 @@ def read_excel() -> pd.DataFrame:
         "hours": df.get(resolved.get("hours"), pd.Series([None]*len(df))),
         "rating": df.get(resolved.get("rating"), pd.Series([None]*len(df))),
         "developer": df.get(resolved.get("developer"), pd.Series([None]*len(df))),
+        "metascore": df.get(resolved.get("metascore"), pd.Series([None]*len(df)))
     })
     out = out.reset_index(drop=True)
     return out
@@ -77,6 +83,7 @@ def as_game_rows(df: pd.DataFrame) -> List[GameRow]:
             hours=float(r["hours"]) if pd.notna(r["hours"]) else None,
             rating=str(r["rating"]).strip() if pd.notna(r["rating"]) else None,
             developer=str(r["developer"]).strip() if pd.notna(r["developer"]) else None,
+            metascore=int(r["metascore"]) if ("metascore" in df.columns and pd.notna(r["metascore"])) else None
         ))
     return rows
 

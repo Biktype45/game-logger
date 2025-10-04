@@ -9,6 +9,10 @@ class Settings(BaseSettings):
 
     RAWG_API_KEY: str
     RAWG_BASE_URL: str = "https://api.rawg.io/api"
+    RAWG_RPS: int = 3
+    RAWG_TIMEOUT: int = 12
+    RAWG_MAX_RETRIES: int = 2
+    RAWG_CACHE_TTL_DAYS: int = 30
 
     class Config:
         env_file = ".env"

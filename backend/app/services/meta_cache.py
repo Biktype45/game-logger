@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS meta_cache (
 );
 """
 
-def make_key(title: str, platform_id: int | None) -> str:
-    return f"{title.strip().lower()}|{platform_id or 'none'}"
+def make_key(title: str, platform_unused=None) -> str:
+    return title.strip().lower()
 
 async def init_db(path="meta_cache.sqlite"):
     async with aiosqlite.connect(path) as db:

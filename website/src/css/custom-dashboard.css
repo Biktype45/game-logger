@@ -1,0 +1,66 @@
+/* Base background */
+body {
+  background: radial-gradient(circle at 20% 20%, #1b1c1f 0%, #0f0f10 100%);
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Card glow aesthetic */
+.card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 30px rgba(0, 184, 255, 0.4);
+}
+
+/* Headings */
+h1, h3 {
+  color: #f5f5f5;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Table tweaks */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th, .table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.table th {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: #b0b0b0;
+}
+.table tr:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* Tooltip styling for Recharts */
+.recharts-tooltip-wrapper {
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.7) !important;
+  color: #fff;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+/* Neon bar gradients */
+.bar-blue {
+  fill: url(#barBlueGrad);
+}
+.bar-green {
+  fill: url(#barGreenGrad);
+}
+.bar-orange {
+  fill: url(#barOrangeGrad);
+}
