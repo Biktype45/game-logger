@@ -17,7 +17,7 @@ async def fetch_best_item(title: str) -> Optional[dict]:
 
     params = {
         "search": title,
-        "page_size": 1,
+        "page_size": 5,
         "key": settings.RAWG_API_KEY,
     }
 
@@ -37,7 +37,12 @@ async def fetch_best_item(title: str) -> Optional[dict]:
                     return None
                 js = r.json()
                 results = js.get("results") or []
-                return results[0] if results else None
+                # Return the first result with a Metacritic score
+                for item in results:
+                    if item.get("metacritic") is not None:
+                        return item
+                return None
+                #return results[0] if results else None
             except Exception:
                 # network error, safe-fail
                 return None
