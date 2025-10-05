@@ -1,7 +1,6 @@
 # 🕹️ Game Logger  
 ### *Track your completed games, analytics, and Metacritic insights — powered by FastAPI + Docusaurus*
 
-![screenshot](https://user-images.githubusercontent.com/example/game-logger-dashboard.png)
 *A modern, interactive dashboard to visualize your gaming history.*
 
 ---
