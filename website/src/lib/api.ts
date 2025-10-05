@@ -16,7 +16,7 @@ export type Stats = {
   }[];
 };
 
-export const API_BASE = "https://game-logger-backend.onrender.com/api";
+export const API_BASE = "https://game-logger-backend-fix.onrender.com/api";
 
 export async function fetchGames() {
   const r = await fetch(`${API_BASE}/games`);
