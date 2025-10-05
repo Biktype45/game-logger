@@ -44,9 +44,9 @@ game-logger/
 │   │   ├── services/            # Excel, enrichment, analytics logic
 │   │   ├── models.py
 │   │   └── utils/banner.py
-│   ├── requirements.txt
-│   └── My Completed Games List-Rakuyo.xlsx
-│
+│   └── requirements.txt
+│   
+│── data/games.xlsx
 ├── website/
 │   ├── src/
 │   │   ├── lib/api.ts           # Fetch logic for stats + games
