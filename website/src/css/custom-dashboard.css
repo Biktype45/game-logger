@@ -64,3 +64,72 @@ h1, h3 {
 .bar-orange {
   fill: url(#barOrangeGrad);
 }
+
+/* ---------- MOBILE RESPONSIVE ENHANCEMENTS ---------- */
+
+@media (max-width: 768px) {
+  /* Main layout */
+  main.container {
+    padding: 0.5rem;
+  }
+
+  h1, h3 {
+    text-align: center;
+  }
+
+  /* Chart cards stack vertically */
+  .row {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .col {
+    width: 100%;
+  }
+
+  .card {
+    padding: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  /* Game table scroll */
+  table.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+
+  table.table thead {
+    display: none;
+  }
+
+  table.table tr {
+    display: block;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 0.6rem;
+    padding: 0.4rem 0;
+  }
+
+  table.table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0.4rem;
+  }
+
+  table.table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #555;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.25rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+}

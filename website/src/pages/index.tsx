@@ -258,12 +258,12 @@ const mustPlayData = useMemo(
                   {games.map((g) => (
                     <tr key={g.idx}>
                       <td>{g.idx + 1}</td>
-                      <td>{g.title}</td>
-                      <td>{g.platform ?? ""}</td>
-                      <td>{g.completed_on ?? "Unknown"}</td>
-                      <td>{g.hours ?? ""}</td>
-                      <td>{g.rating ?? ""}</td>
-                      <td>{g.developer ?? ""}</td>
+                      <td data-label="Title">{g.title}</td>
+                      <td data-label="Platform">{g.platform ?? ""}</td>
+                      <td data-label="Completed On">{g.completed_on || "Unknown"}</td>
+                      <td data-label="Hours">{g.hours ?? ""}</td>
+                      <td data-label="Rating">{g.rating ?? ""}</td>
+                      <td data-label="Developer">{g.developer ?? ""}</td>
                       <td>
                         {g.metascore ? (
                           <a
