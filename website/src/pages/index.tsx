@@ -26,6 +26,17 @@ function getMetascoreColor(score: number): string {
   return "#9E9E9E";                   // gray
 }
 
+function shortenPlatform(name: string): string {
+  const lower = name.toLowerCase();
+  if (lower.includes("nintendo")) return "Switch";
+  if (lower.includes("playstation 5") || lower.includes("ps5")) return "PS5";
+  if (lower.includes("playstation 4") || lower.includes("ps4")) return "PS4";
+  if (lower.includes("xbox")) return "Xbox";
+  if (lower.includes("pc")) return "PC";
+  return name;
+}
+
+
 export default function Home(): JSX.Element {
   const [games, setGames] = useState<Game[]>([]);
   const [stats, setStats] = useState<Stats | null>(null);
@@ -59,16 +70,22 @@ export default function Home(): JSX.Element {
     [stats]
   );
 
-  // Metacritic analytics
   const avgMetaData = useMemo(
-    () => stats ? Object.entries(stats.avg_metascore_by_platform).map(([platform, value]) => ({ platform, value })) : [],
-    [stats]
-  );
+  () => stats
+    ? Object.entries(stats.avg_metascore_by_platform)
+        .map(([platform, value]) => ({ platform: shortenPlatform(platform), value }))
+    : [],
+  [stats]
+);
 
-  const mustPlayData = useMemo(
-    () => stats ? Object.entries(stats.must_play_pct_by_platform).map(([platform, value]) => ({ platform, value })) : [],
-    [stats]
-  );
+const mustPlayData = useMemo(
+  () => stats
+    ? Object.entries(stats.must_play_pct_by_platform)
+        .map(([platform, value]) => ({ platform: shortenPlatform(platform), value }))
+    : [],
+  [stats]
+);
+
 
   const histoData = useMemo(
     () => stats ? Object.entries(stats.metascore_histogram).map(([range, value]) => ({ range, value })) : [],

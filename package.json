@@ -1,12 +1,13 @@
 {
+  "name": "game-logger",
+  "private": true,
   "devDependencies": {
     "concurrently": "^9.2.1"
   },
-  "name": "game-logger",
-  "private": true,
   "scripts": {
-    "dev": "concurrently -k -n API,WEB \"cd backend && .\\.venv\\Scripts\\python -m uvicorn app.main:app --reload --port 8000\" \"cd website && npm run start\"",
-    "dev:api": "cd backend && .\\.venv\\Scripts\\python -m uvicorn app.main:app --reload --port 8000",
+    "dev": "concurrently -k -n API,WEB \"cd backend && python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000\" \"powershell -Command Start-Sleep -Seconds 4; cd website; npm run start\"",
+    "dev:api": "cd backend && python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
     "dev:web": "cd website && npm run start"
   }
 }
+

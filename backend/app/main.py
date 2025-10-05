@@ -3,20 +3,23 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
 from .config import settings
-from .services import meta_cache
+from .services import meta_cache, auto_enrich
 
 from .routers import games, stats, meta
+from .utils.banner import print_banner
 
 
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
-    # Startup
+async def lifespan(app):
+    print_banner()
     await meta_cache.init_db()
+    try:
+        await auto_enrich.auto_enrich_missing()
+    except Exception as e:
+        print(f"[AutoEnrich] Skipped due to error: {e}")
     yield
-    # Shutdown (if you need cleanup later)
-    # e.g., close DB connections, stop background tasks
 
 app = FastAPI(title="Game Logger API", lifespan=lifespan)
 
