@@ -36,3 +36,11 @@ app.include_router(games.router)
 app.include_router(stats.router)
 app.include_router(meta.router)
 
+@app.get("/", tags=["health"])
+async def root():
+    return {
+        "status": "ok",
+        "message": "Game Logger Backend is live!",
+        "docs": "/docs"
+    }
+
